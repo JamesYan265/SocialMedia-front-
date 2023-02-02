@@ -1,0 +1,47 @@
+.rightbarTitle {
+    @apply text-xl font-[550] mb-2.5
+}
+
+.rightbarFriendList {
+    @apply p-0 m-0 list-none
+}
+
+.rightbarFriend {
+    @apply flex items-center mb-4
+}
+
+.rightbarProfileImgContainer {
+    @apply mr-2.5 relative
+}
+
+.rightbarProfileImg {
+    @apply w-10 h-10 rounded-full object-cover
+}
+
+.rightbarUsername {
+    @apply font-[500]
+}
+
+.rightbarOnline {
+    @apply bg-green-600 absolute w-3 h-3 rounded-full top-[-2px] right-0 border-[2px] border-solid border-white z-10
+}
+
+.rightbarOffline {
+    @apply bg-gray-600 absolute w-3 h-3 rounded-full top-[-2px] right-0 border-[2px] border-solid border-white z-10
+}
+
+.rightbarInfo {
+    @apply font-[500] mr-1 text-[#555]
+}
+
+.rightbarFollowings {
+    @apply flex flex-wrap justify-between
+}
+
+.rightbarFollowing {
+    @apply flex flex-col cursor-pointer mb-5 items-center
+}
+
+.rightFollowingImg {
+    @apply w-24 h-24 rounded-md object-cover border
+}

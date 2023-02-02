@@ -1,0 +1,29 @@
+.sidebarList {
+    @apply p-0 m-0 list-none
+}
+
+.sidebarListItem {
+    @apply flex items-center mb-[10px] px-1 py-[6px] shadow-md shadow-[#65789f] rounded-[10px] 
+    transition duration-300 ease-in-out 
+    hover:shadow-none hover:translate-y-1;
+}
+
+.sidebarIconText {
+    @apply text-[20px] pt-1 
+}
+
+.sidebarFriendList {
+    @apply p-0 m-0 list-none
+}
+
+.sidebarFriend {
+    @apply flex items-center mb-4
+}
+
+.sidebarFriendImg {
+    @apply h-8 w-8 object-cover rounded-full mr-3
+}
+
+.logoutbtn {
+    @apply h-[40px] w-[90%] rounded-xl border-none bg-green-600 text-xl font-[500] text-white cursor-pointer m-2 transition-all duration-300 ease-in hover:bg-red-600;
+}

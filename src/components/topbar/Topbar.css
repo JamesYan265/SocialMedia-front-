@@ -1,0 +1,7 @@
+.topbarIconItem {
+    @apply mr-[15px] cursor-pointer relative;
+}
+
+.topbarIconBadge {
+    @apply absolute text-[12px] top-[-5px] right-[-5px] bg-yellow-500 w-4 h-4 rounded-[50%] flex text-center justify-center
+}

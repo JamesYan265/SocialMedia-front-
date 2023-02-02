@@ -1,0 +1,11 @@
+.shareOption {
+    @apply flex items-center mr-[15px] cursor-pointer
+}
+
+.shareIcon {
+    @apply mr-[3px]
+}
+
+.shareOptionText {
+    @apply text-[14px] font-[550]
+}
