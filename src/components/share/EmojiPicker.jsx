@@ -1,5 +1,5 @@
 import { Face } from '@mui/icons-material'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './share.css'
 import Picker from '@emoji-mart/react';
 
