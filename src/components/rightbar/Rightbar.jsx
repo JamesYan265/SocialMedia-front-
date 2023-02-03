@@ -9,7 +9,7 @@ import io from 'socket.io-client';
 
 
 const Rightbar = ({ username }) => {
-  const socket = io('http://13.115.241.229:5000');
+  const socket = io('https://13.115.241.229:5000');
   const { user } = useSelector((store) => store.user);
 
   const [onlinelist, setOnlineList] = useState([{userId : null, username: null}]);
