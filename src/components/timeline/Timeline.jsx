@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 //socket io
 import io from 'socket.io-client';
-const socket = io('https://13.115.241.229/');
+const socket = io('https://13.113.247.196/');
 
 const Timeline = ({ username }) => {
   const [posts, setPosts] = useState([]);

@@ -8,7 +8,7 @@ import io from 'socket.io-client';
 import { LoginSuccess } from '../../status/UserSlice';
 
 const Sidebar = () => {
-  const socket = io('https://13.115.241.229/');
+  const socket = io('https://13.113.247.196/');
   const navigate = useNavigate();
   const { user } = useSelector((store) => store.user);
   const [ ,removeCookie ] = useCookies(['token']);
