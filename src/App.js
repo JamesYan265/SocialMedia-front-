@@ -14,7 +14,7 @@ const socket = io('https://13.115.241.229/');
 function App() {
   const { user } = useSelector((store) => store.user);
   socket.on('ServerMsg', (data) => console.log(data));
-  console.log(axios.get('/users/63b3f0b0ef0c4847b97726e1'));
+  console.log(axios.get('https://13.115.241.229/api/users/63b3f0b0ef0c4847b97726e1'));
 
   if(user) {
     socket.emit('loginStatus', {
