@@ -56,7 +56,7 @@ const Profile = () => {
                     <div className="profileRight flex-[10.5]">
                         <div className="profileRightTop">
                             <div className="profileCover h-80 relative">
-                                <img src={pageUser.coverPicture || "/assets/post/8.jpeg"} alt="" className="profileCoverImg w-full h-60 object-cover" />
+                                <img src={pageUser.coverPicture || "/assets/post/8.png"} alt="" className="profileCoverImg w-full h-60 object-cover" />
                                 <img src={pageUser.profilePicture || '/assets/person/noAvatar.png'} alt="" onClick={(e) => handleClick(e)} className="profileUserImg absolute cursor-pointer h-40 w-40 top-40 left-0 right-0 rounded-full m-auto border-white border-[3px] border-solid object-cover" />
                                 {displayfollow ? <Followbtn pageUser={pageUser}/> : <></>}
                             </div>

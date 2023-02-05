@@ -78,7 +78,7 @@ const CoverImg = ({ pageUser, setClicked }) => {
         <div className='profileImgContainer w-[90%] shadow-md shadow-[#65789f] rounded-[10px] bg-white mt-2 text-center m-auto'>
             <span className='picturedesc font-bold'>橫幅圖片變更</span>
             <label className="w-full" htmlFor='coverfile'>
-                <img src={previewImage ? previewImage : pageUser.coverPicture || '/assets/post/8.jpeg'} alt="" className="profileUserImg cursor-pointer h-60 w-[95%] m-auto rounded-[10px] border-white border-[3px] border-solid object-cover" />
+                <img src={previewImage ? previewImage : pageUser.coverPicture || '/assets/post/8.png'} alt="" className="profileUserImg cursor-pointer h-60 w-[95%] m-auto rounded-[10px] border-white border-[3px] border-solid object-cover" />
                 <input type='file' className='cover file hidden' id='coverfile' accept='.png, .jpeg, .jpg' onChange={(e) => ImageUploading(e)} />
                 <button onClick={confirmChange} id='coverConfirm' className='confirm'>確認變更</button>
             </label>
