@@ -9,6 +9,7 @@ const Tokenhandler = () => {
     const [cookies, setCookie ] = useCookies(['token']);
     const dispatch = useDispatch();
     const getToken =  cookies.token;
+    axiosClient.defaults.baseURL = 'https://13.113.247.196/api';
   
     if(user) {
       setCookie('token', user.token, {path: '/'});
