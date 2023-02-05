@@ -12,6 +12,8 @@ const socket = io('https://13.113.247.196/');
 
 
 function App() {
+  axios.defaults.baseURL = 'https://13.113.247.196/api';
+  console.log(axios.defaults.baseURL);
   const { user } = useSelector((store) => store.user);
   socket.on('ServerMsg', (data) => console.log(data));
   console.log(axios.get('/users/63b3f0b0ef0c4847b97726e1'));
