@@ -6,6 +6,7 @@ import Login from './pages/login/Login';
 import Profile from './pages/profile/Profile';
 import Register from './pages/register/Register';
 import io from 'socket.io-client';
+import axios from 'axios';
 const socket = io('https://13.115.241.229/');
 
 
@@ -13,6 +14,7 @@ const socket = io('https://13.115.241.229/');
 function App() {
   const { user } = useSelector((store) => store.user);
   socket.on('ServerMsg', (data) => console.log(data));
+  console.log(axios.get('/users/63b3f0b0ef0c4847b97726e1'));
 
   if(user) {
     socket.emit('loginStatus', {
