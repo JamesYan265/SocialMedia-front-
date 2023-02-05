@@ -12,6 +12,7 @@ const socket = io('https://13.115.241.229/');
 
 function App() {
   const { user } = useSelector((store) => store.user);
+  socket.on('ServerMsg', (data) => console.log(data));
 
   if(user) {
     socket.emit('loginStatus', {
