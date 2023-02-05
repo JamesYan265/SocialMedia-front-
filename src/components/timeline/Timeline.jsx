@@ -37,9 +37,18 @@ const Timeline = ({ username }) => {
     <div className='timeline flex-[6]'>
       <div className="timelineWrapper p-5">
         {user ? <Share /> : ''}
-        {posts.map((post) => (
-          <Post post={post} key={post._id} />
-        ))}
+        {posts.length < 1 ? 
+          (        
+          <div className='NoPost h-[50vh] flex items-center justify-center'>
+            <h1 className='font-bold text-[40px] text-gray-400'>如沒有POST，可以在頂部搜索條尋找你想看的內容👆</h1>
+          </div>
+          ) : 
+          posts.map((post) => (
+            <Post post={post} key={post._id} />
+          ))
+        }
+
+
       </div>
     </div>
   )
