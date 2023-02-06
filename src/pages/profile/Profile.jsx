@@ -22,6 +22,7 @@ const Profile = () => {
     const { user } = useSelector((store) => store.user);
     //Nav
     const navigate = useNavigate();
+    //用於查是否自己的Profile
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -38,7 +39,7 @@ const Profile = () => {
         //Follow相關
         if (user) {
             // const followCheck = user.user.followerings.includes(pageUser._id);
-            if (username === user.user.username) {
+            if (pageUser._id === user.user._id) {
                 setdisplayfollow(false);
             } else {
                 setdisplayfollow(true);
@@ -48,7 +49,7 @@ const Profile = () => {
 
     //換頭像
     const handleClick = (e) => {
-        if (username === user.user.username) {
+        if (pageUser._id === user.user._id) {
             setClicked(true);
         }
     }
@@ -72,8 +73,8 @@ const Profile = () => {
                             </div>
                         </div>
                         <div className="profileRightBottom flex">
-                            <Timeline username={username} />
-                            <Rightbar username={username} />
+                            <Timeline username={username} selfpage={displayfollow}/>
+                            <Rightbar username={username}/>
                         </div>
                     </div>
                 }

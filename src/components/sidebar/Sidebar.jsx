@@ -6,8 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useCookies } from 'react-cookie';
 import io from 'socket.io-client';
 import { LoginSuccess, LogoutClear } from '../../status/UserSlice';
+import { UserSearchStart, UserSearchEnd } from '../../status/UserSearchSlice';
 
-const Sidebar = ({setSearchUser, searchUser}) => {
+const Sidebar = () => {
   const socket = io('https://54.248.147.86/');
   const navigate = useNavigate();
   const { user } = useSelector((store) => store.user);
@@ -24,26 +25,24 @@ const Sidebar = ({setSearchUser, searchUser}) => {
     dispatch(LogoutClear());
     navigate('/login')
   }
-  
-  const searchUserFn = () => {
-    setSearchUser(!searchUser);
-  }
 
   return (
     <div className='sidebar flex-[2.5] h-screen'>
       <div className="sidebarWrapper p-5">
         <ul className='sidebarList'>
-          <li className="sidebarListItem">
+          <li className="sidebarListItem" onClick={() => dispatch(UserSearchEnd())} >
             <Home className='sidebarIcon' />
             <Link to='/' >
               <span className='sidebarIconText'>主頁</span>
             </Link>
           </li>
-          <li className="sidebarListItem cursor-pointer" onClick={searchUserFn} >
+          <li className="sidebarListItem cursor-pointer" onClick={() => dispatch(UserSearchStart())} >
             <Search className='sidebarIcon' />
-            <span className='sidebarIconText'>搜尋用戶</span>
+            <Link to='/' >
+              <span className='sidebarIconText'>搜尋用戶</span>
+            </Link>
           </li>
-          <li className="sidebarListItem">
+          <li className="sidebarListItem" onClick={() => dispatch(UserSearchEnd())}>
             <Person className='sidebarIcon' />
             <Link to={`/profile/${user.user.username}`}>
               <span className='sidebarIconText'>個人主頁</span>

@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import io from 'socket.io-client';
 const socket = io('https://13.113.247.196/');
 
-const Timeline = ({ username }) => {
+const Timeline = ({ username, selfpage }) => {
   const [posts, setPosts] = useState([]);
   const { user } = useSelector((store) => store.user);
   const { search } = useSelector((store) => store);
@@ -31,10 +31,10 @@ const Timeline = ({ username }) => {
       setPosts(search.searchContent);
     }
 
-  }, [search, user, username, listen]);
-  
-  return (
-    <div className='timeline flex-[6]'>
+  }, [search, user, username]);
+
+  const PublicTimeline = () => {
+    return (
       <div className="timelineWrapper p-5">
         {user ? <Share /> : ''}
         {posts.length < 1 ? 
@@ -47,9 +47,37 @@ const Timeline = ({ username }) => {
             <Post post={post} key={post._id} />
           ))
         }
-
-
       </div>
+    )
+  }
+
+  const PrivateTimeline = () => {
+    const IsSelf = () => {
+      return (
+        <div className="timelineWrapper p-5">
+          {posts.length < 1 ? 
+            (        
+            <div className='NoPost h-[50vh] flex items-center justify-center'>
+              <h1 className='font-bold text-[40px] text-gray-400'>如沒有POST，可以在頂部搜索條尋找你想看的內容👆</h1>
+            </div>
+            ) : 
+            posts.map((post) => (
+              <Post post={post} key={post._id} />
+            ))
+          }
+        </div>
+      )
+    }
+    return (
+      <>
+        {selfpage ? <IsSelf /> : <PublicTimeline />}
+      </>
+    )
+  }
+  
+  return (
+    <div className='timeline flex-[6]'>
+      {username ? <PrivateTimeline/> : <PublicTimeline/>}
     </div>
   )
 }

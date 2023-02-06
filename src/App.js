@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './pages/home/Home'
@@ -7,7 +7,6 @@ import Profile from './pages/profile/Profile';
 import Register from './pages/register/Register';
 import io from 'socket.io-client';
 import axios from 'axios';
-import User from './components/user/User';
 const socket = io('https://54.248.147.86/');
 
 
