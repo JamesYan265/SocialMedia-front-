@@ -37,16 +37,6 @@ const Timeline = ({ username, selfpage }) => {
     return (
       <div className="timelineWrapper p-5">
         {user ? <Share /> : ''}
-        {posts.length < 1 ? 
-          (        
-          <div className='NoPost h-[50vh] flex items-center justify-center'>
-            <h1 className='font-bold text-[40px] text-gray-400'>如沒有POST，可以在頂部搜索條尋找你想看的內容👆</h1>
-          </div>
-          ) : 
-          posts.map((post) => (
-            <Post post={post} key={post._id} />
-          ))
-        }
       </div>
     )
   }
@@ -55,16 +45,6 @@ const Timeline = ({ username, selfpage }) => {
     const IsSelf = () => {
       return (
         <div className="timelineWrapper p-5">
-          {posts.length < 1 ? 
-            (        
-            <div className='NoPost h-[50vh] flex items-center justify-center'>
-              <h1 className='font-bold text-[40px] text-gray-400'>如沒有POST，可以在頂部搜索條尋找你想看的內容👆</h1>
-            </div>
-            ) : 
-            posts.map((post) => (
-              <Post post={post} key={post._id} />
-            ))
-          }
         </div>
       )
     }
@@ -78,6 +58,18 @@ const Timeline = ({ username, selfpage }) => {
   return (
     <div className='timeline flex-[6]'>
       {username ? <PrivateTimeline/> : <PublicTimeline/>}
+      <div className='timelineWrapper p-5'>
+        {posts.length < 1 ? 
+            (        
+            <div className='NoPost h-[50vh] flex items-center justify-center'>
+              <h1 className='font-bold text-[40px] text-gray-400'>如沒有POST，可以在頂部搜索條尋找你想看的內容👆</h1>
+            </div>
+            ) : 
+            posts.map((post) => (
+              <Post post={post} key={post._id} />
+            ))
+          }
+      </div>
     </div>
   )
 }
