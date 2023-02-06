@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './pages/home/Home'
@@ -7,12 +7,13 @@ import Profile from './pages/profile/Profile';
 import Register from './pages/register/Register';
 import io from 'socket.io-client';
 import axios from 'axios';
-const socket = io('https://13.113.247.196/');
+import User from './components/user/User';
+const socket = io('https://54.248.147.86/');
 
 
 
 function App() {
-  axios.defaults.baseURL = 'https://13.113.247.196/api';
+  axios.defaults.baseURL = 'https://54.248.147.86/api';
   const { user } = useSelector((store) => store.user);
   socket.on('ServerMsg', (data) => console.log(data));
 

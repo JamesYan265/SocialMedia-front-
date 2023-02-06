@@ -1,0 +1,4 @@
+.otherUserprofilepage {
+    @apply h-[40px] w-[90%] rounded-xl border-none bg-green-600 text-xl font-[500] text-white cursor-pointer m-2 transition-all duration-300 ease-in hover:bg-orange-600;
+    @apply disabled:bg-gray-600 disabled:cursor-default disabled:text-gray-400
+}

@@ -5,10 +5,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCookies } from 'react-cookie';
 import io from 'socket.io-client';
-import { LoginSuccess } from '../../status/UserSlice';
+import { LoginSuccess, LogoutClear } from '../../status/UserSlice';
 
-const Sidebar = () => {
-  const socket = io('https://13.113.247.196/');
+const Sidebar = ({setSearchUser, searchUser}) => {
+  const socket = io('https://54.248.147.86/');
   const navigate = useNavigate();
   const { user } = useSelector((store) => store.user);
   const [ ,removeCookie ] = useCookies(['token']);
@@ -21,7 +21,12 @@ const Sidebar = () => {
     });
     dispatch(LoginSuccess(''));
     removeCookie('token');
+    dispatch(LogoutClear());
     navigate('/login')
+  }
+  
+  const searchUserFn = () => {
+    setSearchUser(!searchUser);
   }
 
   return (
@@ -34,9 +39,9 @@ const Sidebar = () => {
               <span className='sidebarIconText'>主頁</span>
             </Link>
           </li>
-          <li className="sidebarListItem">
+          <li className="sidebarListItem cursor-pointer" onClick={searchUserFn} >
             <Search className='sidebarIcon' />
-            <span className='sidebarIconText'>搜尋</span>
+            <span className='sidebarIconText'>搜尋用戶</span>
           </li>
           <li className="sidebarListItem">
             <Person className='sidebarIcon' />

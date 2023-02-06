@@ -4,7 +4,7 @@ import Sidebar from '../../components/sidebar/Sidebar'
 import Timeline from '../../components/timeline/Timeline'
 import Topbar from '../../components/topbar/Topbar'
 import axios from 'axios';
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Tokenhandler from '../../Tokenhandler';
 import { useSelector } from 'react-redux';
 import Edit from './Edit';
@@ -12,20 +12,26 @@ import './Profile.css'
 import Followbtn from './Followbtn'
 
 const Profile = () => {
+    Tokenhandler();
     const [pageUser, setpageUser] = useState([]);
     const username = useParams().username;
     //更改Profile圖片使用
     const [clicked, setClicked] = useState(false);
     //設定是否顯示跟隨
     const [displayfollow, setdisplayfollow] = useState(false);
-    Tokenhandler();
     const { user } = useSelector((store) => store.user);
-
+    //Nav
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchUser = async () => {
-            const response = await axios.get(`/users?username=${username}`);
-            setpageUser(response.data);
+            try {
+                const response = await axios.get(`/users?username=${username}`);
+                setpageUser(response.data);
+            } catch (error) {
+                navigate('/');
+                alert('不存在該使用者, 將自動回到主頁');
+            }
         }
         fetchUser();
 
