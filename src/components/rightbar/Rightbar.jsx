@@ -8,7 +8,7 @@ import News from './News'
 import io from 'socket.io-client';
 
 
-const Rightbar = ({ username }) => {
+const Rightbar = ({ username, selfpage }) => {
   const socket = io('https://54.248.147.86/');
   const { user } = useSelector((store) => store.user);
 
@@ -83,15 +83,19 @@ const Rightbar = ({ username }) => {
             <span className="rightbarInfokey">香港</span>
           </div>
         </div>
-        <h4 className='rightbarTitle'>你跟隨了</h4>
-        {followinfo.map((user) => (
-          <div className="rightbarFollowings" key={user.username}>
-            <div className="rightbarFollowing">
-              <img src={user.profilePicture || '/assets/person/noAvatar.png'} alt="" className="rightFollowingImg" />
-              <span className="rightFollowingUsername">{user.username}</span>
-            </div>
-          </div>
-        ))}
+        {selfpage ? <></> : 
+          <>
+            <h4 className='rightbarTitle'>你跟隨了</h4>
+            {followinfo.map((user) => (
+              <div className="rightbarFollowings" key={user.username}>
+                <div className="rightbarFollowing">
+                  <img src={user.profilePicture || '/assets/person/noAvatar.png'} alt="" className="rightFollowingImg" />
+                  <span className="rightFollowingUsername">{user.username}</span>
+                </div>
+              </div>
+            ))}
+          </>}
+
         <p className='promotionTitle font-bold mb-2.5'>有趣的消息</p>
         <News />
       </>

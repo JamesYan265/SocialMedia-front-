@@ -74,7 +74,7 @@ const Profile = () => {
                         </div>
                         <div className="profileRightBottom flex">
                             <Timeline username={username} selfpage={displayfollow}/>
-                            <Rightbar username={username}/>
+                            <Rightbar username={username} selfpage={displayfollow}/>
                         </div>
                     </div>
                 }
