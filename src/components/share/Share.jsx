@@ -1,11 +1,12 @@
 import { Delete, Image } from '@mui/icons-material'
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './share.css'
 import { deleteObject, getDownloadURL, ref, uploadBytesResumable  } from 'firebase/storage';
 import storage from '../../firebase';
 import EmojiPicker from './EmojiPicker';
+import { SendAction } from '../../status/SendSlice';
 
 const Share = () => {
     const {user} = useSelector((store) => store.user);
@@ -16,6 +17,8 @@ const Share = () => {
     const [emoji, setEmoji] = useState('');
     // eslint-disable-next-line no-unused-vars
     let imageloading = false;
+    //dispatch
+    const dispatch = useDispatch();
 
     //上存及預視圖片
     const ImageUpload = (e) => {
@@ -79,6 +82,7 @@ const Share = () => {
             setPreviewImage('');
             document.getElementsByClassName('Preview')[0].style.display = 'none'
             shareInput.current.value = '';
+            dispatch(SendAction());
         } catch (err) {
             console.log(err)
         }

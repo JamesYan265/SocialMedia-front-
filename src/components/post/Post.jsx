@@ -66,7 +66,9 @@ const Post = ({post}) => {
 
             <div className="postCenter my-5 mx-0">
                 <span className='postText whitespace-pre-line break-all'>{post.desc}</span>
-                <img src={post.img} alt="" className="postImg mt-5 w-full max-h-[500px] object-cover" />
+                <div className='postImgBox flex w-full items-center justify-center mt-5'>
+                    <img src={post.img} alt="" className="postImg w-[90%] max-h-[500px] rounded-xl object-cover" />
+                </div>
             </div>
             <div className="postBottom flex items-center justify-between">
                 <div className="postButtomLeft flex items-center">

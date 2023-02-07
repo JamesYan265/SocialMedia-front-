@@ -3,15 +3,12 @@ import Post from '../post/Post';
 import Share from '../share/Share';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-//socket io
-import io from 'socket.io-client';
-const socket = io('https://13.113.247.196/');
 
 const Timeline = ({ username, selfpage }) => {
   const [posts, setPosts] = useState([]);
   const { user } = useSelector((store) => store.user);
   const { search } = useSelector((store) => store);
-  const [ listen, setListen ] = useState(false);
+  const { SendStatus } = useSelector((store) => store.send);
   
   useEffect(() => {
     if(search.searchContent === null) {
@@ -19,19 +16,14 @@ const Timeline = ({ username, selfpage }) => {
         if (user !== 'null') {
           const response = username ? await axios.get(`/posts/profile/${username}`) : await axios.get(`/posts/timeline/${user.user._id}`);
           setPosts(response.data);
-          socket.on('NewPost', (newPost) => {
-            setPosts([...posts, newPost]);
-            setListen(!listen);
-          })
         }
       }
-
       fetchPosts();
     } else {
       setPosts(search.searchContent);
     }
 
-  }, [search, user, username]);
+  }, [search, user, username, SendStatus]);
 
   const PublicTimeline = () => {
     return (
