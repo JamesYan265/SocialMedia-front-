@@ -55,10 +55,10 @@ const Rightbar = ({ username, selfpage }) => {
     return (
       <>
         <div className="eventContainer flex items-center">
-          <img src="assets/mark.png" alt="" className="markImg h-10 w-10 mr-1.5" />
+          <img src="assets/mark.png" alt="" className="markImg h-10 w-[10] mr-1.5" />
           <span className="eventText text-base text-[300]"><b>測試活動</b>開始中!</span>
         </div>
-        <img src='/assets/event.jpeg' className='eventImg w-full rounded-[10px] my-6 mx-0' alt='' />
+        <img src='/assets/event.jpeg' className='eventImg max-w-[80%] overflow-hidden rounded-[10px] my-6 mx-0' alt='' />
 
         <h4 className='rightbarTitle'>你的跟隨者</h4>
         <ul className="rightbarFriendList">
@@ -103,7 +103,7 @@ const Rightbar = ({ username, selfpage }) => {
   }
 
   return (
-    <div className="rightbar flex-[3.5]">
+    <div className="rightbar flex-[3.5] hidden overflow-hidden sm:block">
       <div className="rightbarWrapper pt-5 pl-0 pr-5 pb-0">
         {username ? <ProfileRightbar /> : <HomeRightbar />}
       </div>

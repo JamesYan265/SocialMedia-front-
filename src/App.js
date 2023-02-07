@@ -52,7 +52,7 @@ function App() {
   
 
   return (
-    <div className="App">
+    <div className="App min-w-[600px]">
       <Router>
         <Routes>
           <Route path='/' element={user ? <Home /> : <Navigate to='/login' /> }/>

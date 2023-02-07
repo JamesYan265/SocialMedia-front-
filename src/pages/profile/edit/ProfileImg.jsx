@@ -72,8 +72,10 @@ const ProfileImg = ({ pageUser, setClicked }) => {
     useEffect(() => {
         if(uploading === true) {
             document.getElementById('confirm').setAttribute('disabled', 'disabled');
+            document.getElementById('confirm').innerHTML = '傳送中';
         } else {
             document.getElementById('confirm').removeAttribute('disabled');
+            document.getElementById('confirm').innerHTML = '確認變更';
         }
     },[uploading])
 

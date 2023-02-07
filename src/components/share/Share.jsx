@@ -15,6 +15,7 @@ const Share = () => {
     const [imageurl, setImageUrl] = useState("");
     const [delimg, setDelImg] = useState("");
     const [emoji, setEmoji] = useState('');
+    const [uploading, setUploading] = useState(false);
     // eslint-disable-next-line no-unused-vars
     let imageloading = false;
     //dispatch
@@ -38,15 +39,18 @@ const Share = () => {
                 'state_changed',
                 (snapshot) => {
                     imageloading = true;
+                    setUploading(true);
                 },
                 (err) => {
                     imageloading = false;
+                    setUploading(false);
                 },
                 () => {
                     imageloading = false;
                     getDownloadURL(ref(storage, 'posts/' + file.name)).then((url) => {
                         setImageUrl(url);
                     })
+                    setUploading(false);
                 }
             )
         }
@@ -100,6 +104,17 @@ const Share = () => {
         shareInput.current.value = shareInput.current.value + emoji;
     },[emoji])
 
+    //button for uploading
+    useEffect(() => {
+        if(uploading === true) {
+            document.getElementById('shareButton').setAttribute('disabled', 'disabled');
+            document.getElementById('shareButton').innerHTML = '傳送中';
+        } else {
+            document.getElementById('shareButton').removeAttribute('disabled');
+            document.getElementById('shareButton').innerHTML = '傳送';
+        }
+    },[uploading])
+
 
     
   return (
@@ -112,7 +127,7 @@ const Share = () => {
                 <textarea className='shareInput border-none flex-[10] focus:outline-none resize-none mt-3' ref={shareInput} placeholder='你想分享D咩' rows="5" wrap='100' maxLength='200'></textarea>
                 <Delete className="cancel cursor-pointer mt-2" htmlColor='red' onClick={(e) => {handleClean(e)}}/>
             </div>
-            <img src={previewImage || ""} alt="" className="Preview rounded-lg mt-4 w-full h-1/2 hidden" />
+            <img src={previewImage || ""} alt="" className="Preview w-[90%] max-h-[600px] rounded-xl  hidden" />
 
             <hr className="shareHr m-5" />
             
@@ -128,7 +143,7 @@ const Share = () => {
                         <span className="shareOptionText">Emoji</span>
                     </div>
                 </div>
-                <button className="shareButton border-none px-[17px] py-[6px] mr-5 bg-green-600 cursor-pointer text-white rounded-md" type='submit'>傳送</button>
+                <button id='shareButton' className="shareButton" type='submit'>傳送</button>
             </form>
         </div>
     </div>

@@ -27,25 +27,25 @@ const Sidebar = () => {
   }
 
   return (
-    <div className='sidebar flex-[2.5] h-screen'>
+    <div className='sidebar flex-[1] sm:flex-[2.5] h-screen'>
       <div className="sidebarWrapper p-5">
         <ul className='sidebarList'>
           <li className="sidebarListItem" onClick={() => dispatch(UserSearchEnd())} >
             <Home className='sidebarIcon' />
             <Link to='/' >
-              <span className='sidebarIconText'>主頁</span>
+              <span className='sidebarIconText hidden sm:block'>主頁</span>
             </Link>
           </li>
           <li className="sidebarListItem cursor-pointer" onClick={() => dispatch(UserSearchStart())} >
-            <Search className='sidebarIcon' />
+            <Search className='sidebarIcon ' />
             <Link to='/' >
-              <span className='sidebarIconText'>搜尋用戶</span>
+              <span className='sidebarIconText hidden sm:block'>搜尋用戶</span>
             </Link>
           </li>
           <li className="sidebarListItem" onClick={() => dispatch(UserSearchEnd())}>
             <Person className='sidebarIcon' />
             <Link to={`/profile/${user.user.username}`}>
-              <span className='sidebarIconText'>個人主頁</span>
+              <span className='sidebarIconText hidden sm:block'>個人主頁</span>
             </Link>
           </li>
         </ul>
@@ -53,7 +53,10 @@ const Sidebar = () => {
         <hr className="sidebarHr my-5 mx-0" />
 
         <ul className='sidebarFriendList'>
-          <button className='logoutbtn' onClick={logoutbtn}><Logout className='mb-1 mr-1'/>登出</button>
+          <button className='logoutbtn flex justify-center items-center' onClick={logoutbtn}>
+              <Logout className='mb-1 mr-1'/>
+              <span className='hidden sm:block'>登出</span>
+          </button>
         </ul>
       </div>
     </div>

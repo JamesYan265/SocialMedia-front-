@@ -29,7 +29,7 @@ const Topbar = () => {
         <div className='topbarContaine bg-green-700 h-[50px] w-full flex items-center sticky top-0 z-[100]'>
             <div className='topbarLeft basis-1/4'>
                 <Link to='/'>
-                    <span className='logo text-[24px] text-white font-bold ml-[20px]'>Super Media</span>
+                    <span className='logo text-[10px] text-white font-bold ml-[20px] sm:text-[24px]'>Super Media</span>
                 </Link>
             </div>
 

@@ -9,3 +9,8 @@
 .shareOptionText {
     @apply text-[14px] font-[550]
 }
+
+.shareButton {
+    @apply border-none px-[17px] py-[6px] mr-5 bg-green-600 cursor-pointer text-white rounded-md;
+    @apply disabled:bg-gray-600 disabled:cursor-default disabled:text-gray-400
+}
