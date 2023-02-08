@@ -31,20 +31,20 @@ const Sidebar = () => {
       <div className="sidebarWrapper p-5">
         <ul className='sidebarList'>
           <li className="sidebarListItem" onClick={() => dispatch(UserSearchEnd())} >
-            <Home className='sidebarIcon' />
-            <Link to='/' >
+            <Link to='/' className='flex items-center'>
+              <Home className='sidebarIcon' />
               <span className='sidebarIconText hidden sm:block'>主頁</span>
             </Link>
           </li>
           <li className="sidebarListItem cursor-pointer" onClick={() => dispatch(UserSearchStart())} >
-            <Search className='sidebarIcon ' />
-            <Link to='/' >
+            <Link to='/' className='flex items-center'>
+              <Search className='sidebarIcon ' />
               <span className='sidebarIconText hidden sm:block'>搜尋用戶</span>
             </Link>
           </li>
           <li className="sidebarListItem" onClick={() => dispatch(UserSearchEnd())}>
-            <Person className='sidebarIcon' />
-            <Link to={`/profile/${user.user.username}`}>
+            <Link to={`/profile/${user.user.username}`} className='flex items-center'>
+              <Person className='sidebarIcon' />
               <span className='sidebarIconText hidden sm:block'>個人主頁</span>
             </Link>
           </li>

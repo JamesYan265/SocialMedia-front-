@@ -10,8 +10,8 @@ const Online = ({user, list}) => {
   useEffect(() => {
     online.map(element => {
       if(user._id === element.userId ) {
-        let oc = document.getElementById('onlineCircle');
-        let rbContainer = document.getElementById('rbcontainer');
+        let oc = document.getElementById('onlineCircle' + user._id);
+        let rbContainer = document.getElementById('rbcontainer' + user._id);
         rbContainer.title ='在線上'
         oc.classList.replace('rightbarOffline', 'rightbarOnline');
       }
@@ -20,9 +20,9 @@ const Online = ({user, list}) => {
 
   return (
     <li className="rightbarFriend">
-      <div className="rightbarProfileImgContainer" id='rbcontainer' title='離線中'>
+      <div id={'rbcontainer' + user._id} className="rightbarProfileImgContainer" title='離線中'>
         <img src={user.profilePicture || '/assets/person/noAvatar.png'} alt="" className="rightbarProfileImg" />
-        <span id='onlineCircle' className='rightbarOffline'></span>
+        <span id={'onlineCircle' + user._id} className='rightbarOffline'></span>
       </div>
       <span className='rightbarUsername'>{user.username}</span>
     </li>
